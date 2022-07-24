@@ -1,0 +1,16 @@
+.expenses {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+
+    &__heading {
+        font-size: 1.9rem;
+        color: #3d4168;
+    }
+
+    &__mode {
+        font-size: 1.5rem;
+        color: #272596;
+    }
+}
