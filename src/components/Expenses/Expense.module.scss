@@ -1,0 +1,45 @@
+.expense {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    background-color: #fef;
+    margin: 2rem 0;
+    border-radius: inherit;
+    padding: 1.8rem 2rem;
+
+    &__type {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+    }
+
+    &__icon-box {
+        width: 5.5rem;
+        height: 5.5rem;
+        background-color: aqua;
+        border-radius: 50%;
+    }
+
+    &__icon {}
+
+    &__name {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+        font-weight: bolder;
+        color: rgb(42, 43, 58);
+    }
+
+    &__info {
+        font-size: 1.6rem;
+    }
+
+    &__amount {}
+
+    &__date {
+        font-size: 1.4rem;
+        color: #999;
+        text-transform: capitalize;
+        margin-top: 0.6rem;
+    }
+}
