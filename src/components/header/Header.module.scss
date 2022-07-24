@@ -1,41 +1,45 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &__user {
         display: flex;
         gap: 1rem;
+        align-items: center;
     }
 
     &__img-box {
         border-radius: 50%;
         background-color: #e3c621;
-        height: 2.4rem;
-        width: 2.4rem;
+        height: 4rem;
+        width: 4rem;
+        filter: blur(4px);
     }
 
     &__welcome {
-        font-size: 1rem;
-        color: #33353c;
+        font-size: 1.4rem;
+        color: #59595d;
     }
 
     &__username {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: #33353c;
+        margin-top: 0.5rem;
     }
 
     &__icon-box {
-        width: 2rem;
-        height: 2rem;
+        width: 3.5rem;
+        height: 3.5rem;
         background-color: #fee;
         position: relative;
         border-radius: 6px;
     }
 
     &__icon {
-        height: 1rem;
-        width: 1rem;
+        height: 1.5rem;
+        width: 1.5rem;
         background-color: #ddd;
         position: absolute;
         top: 50%;
