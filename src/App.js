@@ -1,17 +1,12 @@
-import { Fragment } from "react";
-import Header from "./components/header/Header";
-import CreditCard from "./components/CreditCard/CreditCard";
-import ExpensesList from "./components/Expenses/ExpensesList";
-import Nav from "./components/Nav/Nav";
+import { Route, Routes, Navigate, Link } from 'react-router-dom';
+import Overview from './pages/Overview';
 
 const App = () => {
     return(
-        <Fragment>
-            <Header />
-            <CreditCard />
-            <ExpensesList />
-            <Nav />
-        </Fragment>
+        <Routes>
+            <Route path='/' element={<Navigate replace to="/overview" />} />
+            <Route path='/overview' element={<Overview />} />
+        </Routes>
     )
 }
 
