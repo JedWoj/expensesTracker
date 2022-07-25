@@ -1,5 +1,5 @@
 import classes from './Expense.module.scss';
-import Card from '../Card/Card';
+import Card from '../../UI/Card/Card';
 
 const Expense = ({type, kind, amount, date}) => {
     return(

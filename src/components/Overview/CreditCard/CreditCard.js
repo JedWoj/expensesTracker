@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import Card from '../../UI/Card/Card';
 import classes from './CreditCard.module.scss'
 
 const CreditCard = () => {
