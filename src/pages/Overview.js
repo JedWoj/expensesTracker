@@ -1,5 +1,5 @@
 import Header from "../components/Overview/header/Header";
-import ExpensesList from "../components/Overview/Expenses/ExpensesList";
+import Expenses from "../components/Overview/Expenses/Expenses";
 import CreditCard from "../components/Overview/CreditCard/CreditCard";
 import Nav from "../components/Overview/Nav/Nav";
 
@@ -8,7 +8,7 @@ const Overview = () => {
         <>
             <Header />
             <CreditCard />
-            <ExpensesList />
+            <Expenses />
             <Nav />
         </>
     )
