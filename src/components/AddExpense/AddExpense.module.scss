@@ -1,0 +1,110 @@
+.add-expense {
+
+    &__form {
+        text-align: center;
+    }
+
+    &__heading {
+        margin-top: 6rem;
+        font-size: 1.8rem;
+        text-align: center;
+        color: #555;
+    }
+
+    &__amount {
+        text-align: center;
+        height: 8vh;
+        border-radius: 4rem;
+        outline: none;
+        border: none;
+        font-size: 4rem;
+        background: -webkit-linear-gradient(180deg, rgba(91, 203, 233, 1) 0%, rgba(117, 136, 235, 1) 28%, rgba(186, 111, 240, 1) 49%, rgba(228, 111, 240, 1) 64%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+
+    &__bgc {
+        background-color: #fff;
+        position: relative;
+        height: 8vh;
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 4rem;
+        border-radius: 4rem;
+    }
+
+    &__category {
+        width: 100%;
+        margin-top: 3rem;
+        border: none;
+        padding: 1.5rem;
+        outline: none;
+        font-family: Helvetica, Arial, sans-serif;
+        color: #555;
+        border-radius: 1rem;
+    }
+
+    &__note {
+        margin-top: 2rem;
+        display: block;
+        font-family: Helvetica, Arial, sans-serif;
+        outline: none;
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    &__date {
+        width: 100%;
+        margin-top: 2rem;
+        display: block;
+        background-color: #fff;
+        padding: 1.5rem;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: #555;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    &__btn {
+        margin-top: 12rem;
+        border: none;
+        color: #fff;
+        text-transform: uppercase;
+        width: 100%;
+        height: 6rem;
+        border-radius: 1.5rem;
+        font-size: 1.7rem;
+        background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        box-shadow: 9px 14px 19px -11px rgba(66, 68, 90, 1);
+        cursor: pointer;
+    }
+
+    &__exit {
+        position: absolute;
+        right: 5vw;
+        top: 5vw;
+        font-size: 1.6rem;
+        color: #777;
+    }
+}
