@@ -1,5 +1,9 @@
+import TransactionsHeader from "../components/Transactions/TransactionsHeader";
+
 const Transactions  = () => {
-    return <div>Transactions</div>
+    return(
+        <TransactionsHeader />
+    )
 }
 
 export default Transactions;
