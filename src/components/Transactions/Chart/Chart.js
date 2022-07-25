@@ -1,8 +1,14 @@
+import ChartCols from "./ChartCols";
+import ChartInfo from "./ChartInfo";
+
+import classes from './Chart.module.scss';
+
 const Chart = () => {
     return(
-        <main>
-            Chart
-        </main>
+            <section className={classes.chart}>
+                <ChartInfo />
+                <ChartCols />
+            </section>
     )
 }
 

@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     list-style: none;
-    background-color: #fef;
+    background-color: #fff;
     margin: 2rem 0;
     border-radius: inherit;
     padding: 1.8rem 2rem;
@@ -21,8 +21,6 @@
         border-radius: 50%;
     }
 
-    &__icon {}
-
     &__name {
         font-size: 1.8rem;
         text-transform: capitalize;
@@ -33,8 +31,6 @@
     &__info {
         font-size: 1.6rem;
     }
-
-    &__amount {}
 
     &__date {
         font-size: 1.4rem;
