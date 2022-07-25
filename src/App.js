@@ -2,6 +2,7 @@ import { Route, Routes, Navigate, Link } from 'react-router-dom';
 import Overview from './pages/Overview';
 import Add from './pages/Add';
 import Transactions from './pages/Transactions';
+import Login from './pages/Login';
 
 const App = () => {
     return(
@@ -10,6 +11,7 @@ const App = () => {
             <Route path='/overview' element={<Overview />} />
             <Route path='/add' element={<Add />} />
             <Route path='/transactions' element={<Transactions />} />
+            <Route path='/login' element={<Login />} />
         </Routes>
     )
 }
