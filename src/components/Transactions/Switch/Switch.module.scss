@@ -1,0 +1,25 @@
+.switch {
+    display: flex;
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: inherit;
+    font-size: 1.5rem;
+    height: 6rem;
+    border-radius: 1.5rem;
+    padding: 4px;
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        border-radius: 1.5rem;
+        color: #888;
+        cursor: pointer;
+
+        &--active {
+            background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+            color: #fff;
+        }
+    }
+}
