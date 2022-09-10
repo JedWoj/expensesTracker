@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './Switch.module.scss';
 
 const Switch = () => {

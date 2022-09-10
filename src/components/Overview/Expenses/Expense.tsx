@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './Expense.module.scss';
 import Card from '../../UI/Card/Card';
 

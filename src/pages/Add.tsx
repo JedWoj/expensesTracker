@@ -1,3 +1,4 @@
+import React from "react";
 import AddExpense from "../components/Add/AddExpense/AddExpense"
 
 const Add = () => {

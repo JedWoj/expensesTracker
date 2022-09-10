@@ -1,4 +1,5 @@
-import { Route, Routes, Navigate, Link } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import React from 'react';
 import Overview from './pages/Overview';
 import Add from './pages/Add';
 import Transactions from './pages/Transactions';

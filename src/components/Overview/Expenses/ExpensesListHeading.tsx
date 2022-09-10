@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './ExpensesListHeading.module.scss';
 
 const ExpensesListHeading = () => {

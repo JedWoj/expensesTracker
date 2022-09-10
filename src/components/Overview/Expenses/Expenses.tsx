@@ -1,3 +1,4 @@
+import React from "react";
 import ExpensesList from "./ExpensesList";
 import ExpensesListHeading from "./ExpensesListHeading";
 

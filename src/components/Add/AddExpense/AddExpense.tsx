@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './AddExpense.module.scss';
 import { Link } from 'react-router-dom';
 

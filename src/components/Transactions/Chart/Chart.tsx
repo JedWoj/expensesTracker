@@ -1,3 +1,4 @@
+import React from "react";
 import ChartCols from "./ChartCols";
 import ChartInfo from "./ChartInfo";
 
