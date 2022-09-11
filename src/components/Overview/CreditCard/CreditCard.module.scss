@@ -1,4 +1,4 @@
-.credit-cart {
+.credit-card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -31,6 +31,10 @@
         height: 3rem;
         background-color: rgba(100, 100, 100, 0.25);
         border-radius: 50%;
+    }
+
+    &__icon {
+        font-size: 3rem;
     }
 
     &__income-box {
