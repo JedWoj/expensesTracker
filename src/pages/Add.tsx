@@ -1,8 +1,8 @@
 import React from "react";
-import AddExpense from "../components/Add/AddExpense/AddExpense"
+import AddExpenseOverlay from "../components/Add/AddExpense/AddExpenseOverlay"
 
 const Add = () => {
-    return <AddExpense />
+    return <AddExpenseOverlay />
 }
 
 export default Add;

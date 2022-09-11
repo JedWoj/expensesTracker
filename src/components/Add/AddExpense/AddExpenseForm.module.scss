@@ -1,14 +1,7 @@
-.add-expense {
+.add-expense-form {
 
     &__form {
         text-align: center;
-    }
-
-    &__heading {
-        margin-top: 6rem;
-        font-size: 1.8rem;
-        text-align: center;
-        color: #555;
     }
 
     &__amount {
@@ -98,13 +91,5 @@
         background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
         box-shadow: 9px 14px 19px -11px rgba(66, 68, 90, 1);
         cursor: pointer;
-    }
-
-    &__exit {
-        position: absolute;
-        right: 5vw;
-        top: 5vw;
-        font-size: 1.6rem;
-        color: #777;
     }
 }

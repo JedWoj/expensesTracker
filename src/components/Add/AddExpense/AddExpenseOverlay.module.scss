@@ -1,0 +1,17 @@
+.add-expense {
+
+    &__heading {
+        margin-top: 6rem;
+        font-size: 1.8rem;
+        text-align: center;
+        color: #555;
+    }
+
+    &__exit {
+        position: absolute;
+        right: 5vw;
+        top: 5vw;
+        font-size: 1.6rem;
+        color: #777;
+    }
+}
