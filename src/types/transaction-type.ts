@@ -3,4 +3,5 @@ export type Transaction = {
     category: string,
     note: string,
     date: string,
+    type: string,
 }

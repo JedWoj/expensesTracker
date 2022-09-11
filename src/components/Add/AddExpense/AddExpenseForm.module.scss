@@ -72,13 +72,6 @@
         color: #555;
     }
 
-    ::-webkit-calendar-picker-indicator {
-        background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
-        padding: 5px;
-        cursor: pointer;
-        border-radius: 3px;
-    }
-
     &__btn {
         margin-top: 12rem;
         border: none;
@@ -91,5 +84,31 @@
         background: linear-gradient(149deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
         box-shadow: 9px 14px 19px -11px rgba(66, 68, 90, 1);
         cursor: pointer;
+    }
+
+    &__invalid-input {
+        margin-top: 1rem;
+        font-size: 2rem;
+        color: rgb(171, 36, 36);
+    }
+
+    &__radio-wrap {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__radio-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__radio-label {
+        margin-left: 1rem;
+        font-size: 1.6rem;
+        transform: translateY(1px);
+        color: #555;
     }
 }
