@@ -15,10 +15,24 @@
     }
 
     &__icon-box {
+        position: relative;
         width: 5.5rem;
         height: 5.5rem;
-        background-color: aqua;
+        background: linear-gradient(63deg, rgb(34, 193, 195) 0%, rgb(164, 253, 45) 100%);
         border-radius: 50%;
+
+        &--expense {
+            background: linear-gradient(338deg, rgb(121, 55, 55) 0%, rgb(121, 35, 9) 39%, rgb(255, 0, 0) 100%);
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 5.8rem;
+        color: #fff;
     }
 
     &__name {

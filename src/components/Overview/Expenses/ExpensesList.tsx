@@ -7,7 +7,7 @@ const DUMMY_EXPENES = [{type: 'food', amount:'45', kind: '-', date:'today'},{typ
 const ExpensesList = () => {
     return(    
         <ul>
-            {DUMMY_EXPENES.map(exp => <Expense type={exp.type} amount={exp.amount} kind={exp.kind} date={exp.date} />)}
+            {DUMMY_EXPENES.map(exp => <Expense key={Math.random()} type={exp.type} amount={exp.amount} kind={exp.kind} date={exp.date} />)}
         </ul>
     )
 }
