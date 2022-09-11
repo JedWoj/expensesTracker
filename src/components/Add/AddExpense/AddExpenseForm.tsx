@@ -1,9 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import { transactionsActions } from '../../../store/transactionsSlice';
+import { useAppDispatch } from '../../../hooks';
 import classes from './AddExpenseForm.module.scss';
 
 const AddExpenseForm = () => {
+    const dispatch = useAppDispatch();
+
     const formik = useFormik({
         initialValues: {
             value: '',
@@ -18,7 +22,14 @@ const AddExpenseForm = () => {
             date: Yup.date().required("Date is required"),
         }),
         onSubmit: () => {
-            console.log(formik.values);
+            dispatch(transactionsActions.addTransaction({
+                value: Number(formik.values.value), 
+                date: formik.values.date,
+                category: formik.values.category,
+                note: formik.values.note,
+            }))
+            dispatch(transactionsActions.logTransaction())
+            formik.resetForm();
         }
     })
 

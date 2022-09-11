@@ -4,14 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleLeft, faCalendar } from '@fortawesome/free-regular-svg-icons';
 import classes from './TransactionsHeader.module.scss';
 
-import { transactionsActions } from '../../../store/transactionsSlice';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
-
 const TransactionsHeader = () => {
-    const dispatch = useAppDispatch();
-
-    dispatch(transactionsActions.addTransaction('test'))
-    dispatch(transactionsActions.logTransaction())
 
     return(
         <header className={classes['transactions-header']}>

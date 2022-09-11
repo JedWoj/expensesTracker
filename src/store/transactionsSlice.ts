@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, current, PayloadAction} from '@reduxjs/toolkit';
+import { Transaction } from '../types/transaction-type';
 
 const initialTransactions = [];
 
@@ -6,11 +7,11 @@ const transactionsSlice = createSlice({
     name: 'transactions',
     initialState: initialTransactions,
     reducers: {
-        addTransaction(state,action) {
+        addTransaction(state,action: PayloadAction<Transaction>) {
             state.push(action.payload)
         },
         logTransaction(state) {
-            console.log([...state])
+            console.log(current(state))
         }
     }
 });
