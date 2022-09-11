@@ -5,10 +5,10 @@ import { faArrowAltCircleLeft, faCalendar } from '@fortawesome/free-regular-svg-
 import classes from './TransactionsHeader.module.scss';
 
 import { transactionsActions } from '../../../store/transactionsSlice';
-import {useDispatch, useSelector} from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 const TransactionsHeader = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     dispatch(transactionsActions.addTransaction('test'))
     dispatch(transactionsActions.logTransaction())
