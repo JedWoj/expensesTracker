@@ -5,7 +5,7 @@ const ChartInfo = () => {
     return(
         <div className={classes['chart-heading']}>
             <p className={classes['chart-heading__date']}>
-                01 Jan 2021 - 01 April 2021
+                01 Jan 2021 - 31 Dec 2021
             </p>
             <h2 className={classes['chart-heading__amount']}>
                 $3500.00

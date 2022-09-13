@@ -8,8 +8,9 @@ interface ChartBarProps {
 }
 
 const ChartBar = ({label, value, maxValue}: ChartBarProps) => {
-    let barFillHeight = '50%';
-
+    let barFillNumber = `${(value/maxValue)* 100}`;
+    let barFillHeight = `${barFillNumber}%`;
+   
     return(
         <div className={classes['chart-bar']}>
             <div className={classes['chart-bar__inner']}>
