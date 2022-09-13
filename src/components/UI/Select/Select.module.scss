@@ -9,6 +9,7 @@
     align-items: center;
 
     &__container {
+        position: relative;
         background-color: #fff;
         display: flex;
         flex-direction: column;
@@ -35,4 +36,11 @@
         color: #555;
     }
 
+    &__close-btn {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+        font-size: 2rem;
+        cursor: pointer;
+    }
 }

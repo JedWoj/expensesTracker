@@ -3,7 +3,12 @@ import BackgroundGradientVisible from "../BackgoundGradient/BackgoundGradientVis
 import ReactPortal from "../../ReactPortal/ReactPortal";
 import classes from './Select.module.scss';
 
-const Select = () => {
+interface SelectProps {
+    handleVisibility: Function;
+}
+
+const Select = ({handleVisibility}: SelectProps) => {
+
     const setYearHandler = () => {
 
     }
@@ -11,7 +16,7 @@ const Select = () => {
     return(
         <ReactPortal wrapperId="root">
             <BackgroundGradientVisible>
-                <div className={classes.select}>
+                <div onClick={() => handleVisibility((prev) => !prev)} className={classes.select}>
                     <div className={classes.select__container}>
                         <label className={classes.select__label}>
                             Filter by year
@@ -22,6 +27,9 @@ const Select = () => {
                             <option value='2020'>2020</option>
                             <option value='2019'>2019</option>
                         </select>
+                        <div className={classes["select__close-btn"]}>
+                            x
+                        </div>
                     </div>
                 </div>
             </BackgroundGradientVisible>
