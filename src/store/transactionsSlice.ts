@@ -1,4 +1,4 @@
-import {createSlice, current, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { immutableTransaction } from '../types/transaction-type';
 
 const allTransactions = [{category: 'food', value: 45, type: '+', date:'today'},{category: 'shopping', value: 24, type: '-', date:'today'},{category: 'food', value: 45, type: '-', date:'today'},{category: 'food', value: 45, type: '+', date:'yestarday'},{category: 'food', value: 45, type: '-', date:'2 days ago', note: 'Rent for apartment'}];
@@ -24,9 +24,6 @@ const transactionsSlice = createSlice({
                 state.activeTransactions = expensesTransactions;
                 state.activeTransactionType = '-';
             }
-        },
-        logTransaction(state) {
-            console.log(current(state))
         },
     }
 });
