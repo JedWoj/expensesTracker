@@ -7,7 +7,6 @@ import classes from './ExpensesList.module.scss';
 
 const ExpensesList = () => {
     const location = useLocation();
-    console.log(location.pathname);
     const transactionsList = useAppSelector((state) => location.pathname === '/overview' ? state.transactions.allTransactions : state.transactions.activeTransactions);
     
     return(    

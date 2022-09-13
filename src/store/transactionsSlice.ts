@@ -24,7 +24,6 @@ const transactionsSlice = createSlice({
                 state.activeTransactions = expensesTransactions;
                 state.activeTransactionType = '-';
             }
-            console.log(state.activeTransactions, state.activeTransactionType);
         },
         logTransaction(state) {
             console.log(current(state))
