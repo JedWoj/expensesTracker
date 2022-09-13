@@ -37,7 +37,6 @@ const AddExpenseForm = () => {
                 note: formik.values.note,
                 type: radioValue,
             }))
-            dispatch(transactionsActions.logTransaction())
             formik.resetForm();
         }
     });

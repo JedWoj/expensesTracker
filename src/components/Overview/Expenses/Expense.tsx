@@ -12,7 +12,7 @@ interface ExpenseProps {
     note?: string,
 }
 
-const Expense = ({type, category, amount, date, note} : ExpenseProps)  => {
+const Expense = ({type, category, amount, date, note = ''} : ExpenseProps)  => {
     return(
     <Card>
         <li className={classes.expense}>
