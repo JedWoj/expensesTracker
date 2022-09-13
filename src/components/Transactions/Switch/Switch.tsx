@@ -6,9 +6,11 @@ import classes from './Switch.module.scss';
 const Switch = () => {
     const dispatch = useAppDispatch();
     const activeTransactionType = useAppSelector((state) => state.transactions.activeTransactionType);
+    const activeTransaction = useAppSelector((state) => state.transactions.activeTransactions);
 
     const handleTransactionsFiltering = (type: string) => {
         dispatch(transactionsActions.setActiveTransactions(type));
+        console.log(activeTransaction);
     } 
 
     return(      
