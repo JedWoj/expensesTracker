@@ -4,13 +4,17 @@ import { faArrowAltCircleDown, faArrowAltCircleUp } from '@fortawesome/free-regu
 import classes from './Expense.module.scss';
 import Card from '../../UI/Card/Card';
 
-const Expense = ({type, kind, amount, date}) => {
+interface ExpenseProps {
+    type: string, category: string, amount: number, date: string
+}
+
+const Expense = ({type, category, amount, date} : ExpenseProps)  => {
     return(
     <Card>
         <li className={classes.expense}>
             <div className={classes.expense__type}>
-                <div className={kind === '-' ? `${classes['expense__icon-box']} ${classes['expense__icon-box--expense']}` : classes['expense__icon-box']}>
-                    {kind === '-' ?
+                <div className={category === '-' ? `${classes['expense__icon-box']} ${classes['expense__icon-box--expense']}` : classes['expense__icon-box']}>
+                    {category === '-' ?
                     <FontAwesomeIcon icon={faArrowAltCircleDown} className={classes.expense__icon} /> :
                     <FontAwesomeIcon icon={faArrowAltCircleUp} className={classes.expense__icon} />}
                 </div>
@@ -20,7 +24,7 @@ const Expense = ({type, kind, amount, date}) => {
             </div>
             <div className={classes.expense__info}>
                 <p className={classes.expense__amount}>
-                    {`${kind === '-' ? kind : ''}$${amount}`}
+                    {`${category === '-' ? category : ''}$${amount}`}
                 </p>
                 <p className={classes.expense__date}>
                     {date}

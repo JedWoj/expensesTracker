@@ -1,7 +1,7 @@
 import {createSlice, current, PayloadAction} from '@reduxjs/toolkit';
 import { Transaction } from '../types/transaction-type';
 
-const initialTransactions = [];
+const initialTransactions = [{type: 'food', value: 45, category: '+', date:'today'},{type: 'shopping', value: 24, category: '-', date:'today'},{type: 'food', value: 45, category: '-', date:'today'},{type: 'food', value: 45, category: '+', date:'yestarday'},{type: 'food', value: 45, category: '-', date:'2 days ago'}];
 
 const transactionsSlice = createSlice({
     name: 'transactions',
@@ -12,7 +12,7 @@ const transactionsSlice = createSlice({
         },
         logTransaction(state) {
             console.log(current(state))
-        }
+        },
     }
 });
 

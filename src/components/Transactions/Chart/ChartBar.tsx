@@ -1,7 +1,13 @@
 import React from 'react';
 import classes from './ChartBar.module.scss';
 
-const ChartBar = ({label, value, maxValue}) => {
+interface ChartBarProps {
+    label: string,
+    value: number,
+    maxValue: number,
+}
+
+const ChartBar = ({label, value, maxValue}: ChartBarProps) => {
     let barFillHeight = '50%';
 
     return(

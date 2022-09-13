@@ -1,14 +1,14 @@
 import React from 'react';
+import { useAppSelector } from '../../../hooks';
 import Expense from './Expense';
 import classes from './ExpensesList.module.scss';
 
-const DUMMY_EXPENES = [{type: 'food', amount:'45', kind: '-', date:'today'},{type: 'shopping', amount:'24', kind: '-', date:'today'},{type: 'food', amount:'45', kind: '-', date:'today'},{type: 'food', amount:'45', kind: '-', date:'today'},{type: 'food', amount:'45', kind: '-', date:'today'}]
-
-
 const ExpensesList = () => {
+    const transactionsList = useAppSelector((state) => state.transactions);
+    console.log(transactionsList)
     return(    
         <ul className={classes['expenses-list']}>
-            {DUMMY_EXPENES.map(exp => <Expense key={Math.random()} type={exp.type} amount={exp.amount} kind={exp.kind} date={exp.date} />)}
+            {transactionsList.map(exp => <Expense key={Math.random()} category={exp.category} type={exp.type} amount={exp.value} date={exp.date} />)}
         </ul>
     )
 }
