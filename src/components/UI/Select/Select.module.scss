@@ -1,0 +1,38 @@
+.select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        border-radius: 1.5rem;
+        padding: 4rem 8rem;
+    }
+
+    &__label {
+        color: #555;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    &__select {
+        font: inherit;
+        font-size: 2rem;
+        padding: 0.5rem 3rem;
+        font-weight: bold;
+        border-radius: 6px;
+        outline: none;
+        color: #555;
+    }
+
+}

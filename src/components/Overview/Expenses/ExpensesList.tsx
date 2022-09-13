@@ -10,7 +10,7 @@ const ExpensesList = () => {
     const transactionsList = useAppSelector((state) => location.pathname === '/overview' ? state.transactions.allTransactions : state.transactions.activeTransactions);
     
     return(    
-        <ul className={classes['expenses-list']}>
+        <ul className={location.pathname !== '/transactions' && classes['expenses-list']}>
             {transactionsList.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
         </ul>
     )
