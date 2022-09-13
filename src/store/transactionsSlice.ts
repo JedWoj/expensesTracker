@@ -9,7 +9,7 @@ const incomeTransactions = [{category: 'food', value: 45, type: '+', date:'today
 
 const transactionsSlice = createSlice({
     name: 'transactions',
-    initialState: {allTransactions, expensesTransactions, incomeTransactions, activeTransactions: incomeTransactions},
+    initialState: {allTransactions, expensesTransactions, incomeTransactions, activeTransactions: incomeTransactions, activeTransactionType: '+'},
     reducers: {
         addTransaction(state,action: PayloadAction<immutableTransaction>) {
             state.allTransactions.push(action.payload);
@@ -17,8 +17,14 @@ const transactionsSlice = createSlice({
         },
         setActiveTransactions(state, action: PayloadAction<string>) {
             const {payload} = action;
-            payload === '+' ? state.activeTransactions = incomeTransactions : state.activeTransactions = expensesTransactions; 
-            console.log(state.activeTransactions);
+            if (payload === '+') {
+                state.activeTransactions = incomeTransactions;
+                state.activeTransactionType = '+';
+            } else {
+                state.activeTransactions = expensesTransactions;
+                state.activeTransactionType = '-';
+            }
+            console.log(state.activeTransactions, state.activeTransactionType);
         },
         logTransaction(state) {
             console.log(current(state))
