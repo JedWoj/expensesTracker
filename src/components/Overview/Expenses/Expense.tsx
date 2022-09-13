@@ -5,26 +5,30 @@ import classes from './Expense.module.scss';
 import Card from '../../UI/Card/Card';
 
 interface ExpenseProps {
-    type: string, category: string, amount: number, date: string
+    type: string, 
+    category: string, 
+    amount: number, 
+    date: string,
+    note?: string,
 }
 
-const Expense = ({type, category, amount, date} : ExpenseProps)  => {
+const Expense = ({type, category, amount, date, note} : ExpenseProps)  => {
     return(
     <Card>
         <li className={classes.expense}>
             <div className={classes.expense__type}>
-                <div className={category === '-' ? `${classes['expense__icon-box']} ${classes['expense__icon-box--expense']}` : classes['expense__icon-box']}>
-                    {category === '-' ?
+                <div className={type === '-' ? `${classes['expense__icon-box']} ${classes['expense__icon-box--expense']}` : classes['expense__icon-box']}>
+                    {type === '-' ?
                     <FontAwesomeIcon icon={faArrowAltCircleDown} className={classes.expense__icon} /> :
                     <FontAwesomeIcon icon={faArrowAltCircleUp} className={classes.expense__icon} />}
                 </div>
                 <p className={classes.expense__name}>
-                    {type}
+                    {category}
                 </p>
             </div>
             <div className={classes.expense__info}>
                 <p className={classes.expense__amount}>
-                    {`${category === '-' ? category : ''}$${amount}`}
+                    {`${type === '-' ? type : ''}$${amount}`}
                 </p>
                 <p className={classes.expense__date}>
                     {date}

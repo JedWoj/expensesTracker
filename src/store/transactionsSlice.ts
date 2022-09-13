@@ -1,7 +1,7 @@
 import {createSlice, current, PayloadAction} from '@reduxjs/toolkit';
 import { Transaction } from '../types/transaction-type';
 
-const initialTransactions = [{type: 'food', value: 45, category: '+', date:'today'},{type: 'shopping', value: 24, category: '-', date:'today'},{type: 'food', value: 45, category: '-', date:'today'},{type: 'food', value: 45, category: '+', date:'yestarday'},{type: 'food', value: 45, category: '-', date:'2 days ago'}];
+const initialTransactions = [{category: 'food', value: 45, type: '+', date:'today'},{category: 'shopping', value: 24, type: '-', date:'today'},{category: 'food', value: 45, type: '-', date:'today'},{category: 'food', value: 45, type: '+', date:'yestarday'},{category: 'food', value: 45, type: '-', date:'2 days ago', note: 'Rent for apartment'}];
 
 const transactionsSlice = createSlice({
     name: 'transactions',
