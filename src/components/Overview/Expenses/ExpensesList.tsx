@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks';
-import { filteredTransactions,sortTransactions } from './helpers';
+import { filterTransactions,sortTransactions } from './helpers';
 import { Transaction } from '../../../types/transaction-type';
 import Expense from './Expense';
 import classes from './ExpensesList.module.scss';
@@ -11,7 +11,7 @@ const ExpensesList = () => {
     const transactionsList = useAppSelector((state) => location.pathname === '/overview' ? state.transactions.allTransactions : state.transactions.activeTransactions);
     const activeYear = useAppSelector((state) => state.transactions.activeYear);
     let shownTransactions = [];
-    const filtered = filteredTransactions(transactionsList,activeYear);
+    const filtered = filterTransactions(transactionsList,activeYear);
     const sorted = sortTransactions(filtered);
 
     location.pathname === '/overview' ? shownTransactions = sortTransactions(transactionsList) : shownTransactions = sorted;
