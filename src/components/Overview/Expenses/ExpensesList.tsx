@@ -9,9 +9,15 @@ const ExpensesList = () => {
     const location = useLocation();
     const transactionsList = useAppSelector((state) => location.pathname === '/overview' ? state.transactions.allTransactions : state.transactions.activeTransactions);
     
+    const sortedTransactions = [...transactionsList].sort((a,b) => {
+        const c = new Date(a.date).getMilliseconds();
+        const d = new Date(b.date).getMilliseconds();
+        return c - d
+    })
+
     return(    
         <ul className={location.pathname !== '/transactions' ? classes['expenses-list'] : undefined}>
-            {transactionsList.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
+            {sortedTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
         </ul>
     )
 }
