@@ -12,15 +12,17 @@ const transactionsSlice = createSlice({
 
     activeTransactions: [{category: 'food', value: 45, type: '+', date:'2021-12-12'},{category: 'food', value: 45, type: '+', date:'2021-09-12'}],
 
-    activeTransactionType: '+',},
+    activeTransactionType: '+',
+    
+    activeYear: '2022',
+    },
     reducers: {
-        addTransaction(state,action: PayloadAction<immutableTransaction>) {
+        addTransaction(state, action: PayloadAction<immutableTransaction>) {
             state.allTransactions.push(action.payload);
             action.payload.type === '+' ? state.incomeTransactions.push(action.payload) : state.expensesTransactions.push(action.payload);
         },
         setActiveTransactions(state, action: PayloadAction<string>) {
-            const {payload} = action;
-            if (payload === '+') {
+            if (action.payload === '+') {
                 state.activeTransactions = state.incomeTransactions;
                 state.activeTransactionType = '+';
             } else {
@@ -28,6 +30,9 @@ const transactionsSlice = createSlice({
                 state.activeTransactionType = '-';
             }
         },
+        setActiveYear(state, action: PayloadAction<string>) {
+            state.activeYear = action.payload;
+        }
     }
 });
 

@@ -1,7 +1,11 @@
 import React from 'react';
 import classes from './Card.module.scss';
 
-const Card = ({children}) => {
+interface CardProps {
+    children: JSX.Element;
+}
+
+const Card = ({children}: CardProps) => {
     return(
         <div className={classes.card}>
             {children}

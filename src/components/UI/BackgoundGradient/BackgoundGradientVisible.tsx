@@ -1,7 +1,12 @@
 import React from 'react';
 import classes from './BackgroundGradientVisible.module.scss';
 
-const BackgroundGradientVisible = ({children}) => {
+interface BackgoundGradientVisibleProps {
+    children: JSX.Element,
+}
+
+const BackgroundGradientVisible = ({children}: BackgoundGradientVisibleProps) => {
+    
     return(
         <div className={classes['background-gradient']}>
             {children}
