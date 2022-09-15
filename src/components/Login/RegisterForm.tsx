@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import classes from './RegisterForm.module.scss';
 
@@ -21,6 +21,7 @@ type AnswerType = {
 }
 
 const RegisterForm = () => {
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -54,7 +55,8 @@ const RegisterForm = () => {
             console.log(data);
             if(!response.ok) {
                 throw new Error(`Authentication failed:`);
-            } 
+            }
+            navigate('/login'); 
         } catch(err: unknown) {
             console.log(err)
         }}

@@ -1,10 +1,28 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.scss";
 
+type AnswerType = {
+    kind?: string,
+    expiresIn?: string,
+    idToken?: string,
+    email?: string,
+    localId?: string,
+    refreshToken?: string,
+    code?: number,
+    registered?: boolean,
+    errors?: {
+        message?: string,
+        domain?: string,
+        reason?: string
+    }[],
+    message?: string
+}
+
 const LoginForm = () => {
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -25,12 +43,13 @@ const LoginForm = () => {
                 headers: {
                         'Content-Type': 'application/json',
                     }})
-                const data = await response.json();
+                const data: AnswerType = await response.json();
                 console.log(data);
                 if(!response.ok) {
                     throw new Error(`Authentication failed:`);
                 }
-            }catch(err: unknown) {
+                navigate('/overview');
+            } catch(err: unknown) {
                 console.log(err)
             }    
         }
