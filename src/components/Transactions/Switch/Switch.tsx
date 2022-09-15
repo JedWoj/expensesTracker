@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useCallback} from 'react';
 import { transactionsActions } from '../../../store/transactionsSlice';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 import classes from './Switch.module.scss';
@@ -7,9 +7,13 @@ const Switch = () => {
     const dispatch = useAppDispatch();
     const activeTransactionType = useAppSelector((state) => state.transactions.activeTransactionType);
 
-    const handleTransactionsFiltering = (type: string) => {
+    const handleTransactionsFiltering = useCallback((type: string) => {
         dispatch(transactionsActions.setActiveTransactions(type));
-    } 
+    },[dispatch])
+    
+    useEffect(()=> {
+        handleTransactionsFiltering(activeTransactionType);
+    },[handleTransactionsFiltering, activeTransactionType])
 
     return(      
         <section className={classes.switch}>     
