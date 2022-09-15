@@ -3,11 +3,23 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import classes from './RegisterForm.module.scss';
 
-export type Popup = {
-    popupHandler: React.Dispatch<React.SetStateAction<boolean>>;
+type AnswerType = {
+    kind?: string,
+    expiresIn?: string,
+    idToken?: string,
+    email?: string,
+    localId?: string,
+    refreshToken?: string,
+    code?: number,
+    errors?: {
+        message?: string,
+        domain?: string,
+        reason?: string
+    }[],
+    message?: string
 }
 
-const RegisterForm = ({ popupHandler }: Popup) => {
+const RegisterForm = () => {
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -24,9 +36,26 @@ const RegisterForm = ({ popupHandler }: Popup) => {
               "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"),
             repeat: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required("Repeat password")
         }),
-        onSubmit: () => {
-            popupHandler(true);
-        }
+        onSubmit: async () => {
+        try {
+            const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDCgnTKKFeEU8oKSTUvnywA04EW4ZDxRHk',{
+                method: 'POST',
+                body: JSON.stringify({
+                    email: formik.values.email,
+                    password: formik.values.password,
+                    returnSecureToken: true,}),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            const data: AnswerType = await response.json();
+            console.log(data);
+            if(!response.ok) {
+                throw new Error(`Authentication failed:`);
+            } 
+        } catch(err: unknown) {
+            console.log(err)
+        }}
     });
 
     return (
