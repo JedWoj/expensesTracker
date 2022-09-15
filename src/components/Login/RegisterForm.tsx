@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from 'yup';
 import classes from './RegisterForm.module.scss';
 
@@ -20,6 +21,7 @@ type AnswerType = {
 }
 
 const RegisterForm = () => {
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -119,9 +121,9 @@ const RegisterForm = () => {
                 <button type="submit" className={classes.register__btn}>
                     Sign In
                 </button>
-                <button type="button" className={classes.register__btn}>
+                <Link to="/login" className={classes.register__btn}>
                     Cancel
-                </button>            
+                </Link>            
             </div>
         </form>
     )

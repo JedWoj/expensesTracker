@@ -1,9 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import firebase from 'firebase/compat/app';
-import * as firebaseui from 'firebaseui';
-import 'firebaseui/dist/firebaseui.css';
 import { Link } from "react-router-dom";
 import classes from "./LoginForm.module.scss";
 
@@ -17,8 +14,25 @@ const LoginForm = () => {
             email: Yup.string().email("Invalid email format").required("Email is required"),
             password: Yup.string().required("Please Enter your password"),
         }),
-        onSubmit: () => {
-            
+        onSubmit: async () => {
+            try {
+                const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDCgnTKKFeEU8oKSTUvnywA04EW4ZDxRHk',{
+                method: 'POST',
+                body: JSON.stringify({
+                    email: formik.values.email,
+                    password: formik.values.password,
+                    returnSecureToken: true,}),
+                headers: {
+                        'Content-Type': 'application/json',
+                    }})
+                const data = await response.json();
+                console.log(data);
+                if(!response.ok) {
+                    throw new Error(`Authentication failed:`);
+                }
+            }catch(err: unknown) {
+                console.log(err)
+            }    
         }
     });
 
