@@ -4,6 +4,7 @@ import Overview from './pages/Overview';
 import Add from './pages/Add';
 import Transactions from './pages/Transactions';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
     return(
@@ -13,6 +14,7 @@ const App = () => {
             <Route path='/add' element={<Add />} />
             <Route path='/transactions' element={<Transactions />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
         </Routes>
     )
 }

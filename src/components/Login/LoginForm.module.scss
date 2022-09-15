@@ -1,0 +1,44 @@
+.login {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1.6rem;
+    background: linear-gradient(140deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+    padding: 2rem 4rem;
+    box-shadow: 8px 7px 28px 14px rgba(181, 93, 169, 1);
+    text-align: center;
+
+    &__input {
+        height: 3.5rem;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+    }
+
+    &__btn {
+        width: 50%;
+        background: linear-gradient(283deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        box-shadow: 8px 7px 28px -5px rgba(65, 69, 115, 1);
+        outline: none;
+        border: none;
+        color: #fff;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        font-size: 2rem;
+        border-radius: 0.5rem;
+        margin: 1rem auto 0 auto;
+    }
+
+    &__register {
+        font-size: 1rem;
+    }
+}
