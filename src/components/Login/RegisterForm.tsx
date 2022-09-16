@@ -1,28 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
+import { RegistrationAnswerType } from "../../types/answer-type";
 import classes from './RegisterForm.module.scss';
 
-type AnswerType = {
-    kind?: string,
-    expiresIn?: string,
-    idToken?: string,
-    email?: string,
-    localId?: string,
-    refreshToken?: string,
-    code?: number,
-    errors?: {
-        message?: string,
-        domain?: string,
-        reason?: string
-    }[],
-    message?: string
-}
-
 const RegisterForm = () => {
+    const [error, setError] = useState<boolean>(false);
     const navigate = useNavigate();
-
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -40,8 +25,7 @@ const RegisterForm = () => {
             repeat: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required("Repeat password")
         }),
         onSubmit: async () => {
-        try {
-            const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`,{
+            const register = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`,{
                 method: 'POST',
                 body: JSON.stringify({
                     email: formik.values.email,
@@ -51,18 +35,18 @@ const RegisterForm = () => {
                     'Content-Type': 'application/json',
                 },
             })
-            const data: AnswerType = await response.json();
+            const data: RegistrationAnswerType = await register.json();
             console.log(data);
-            if(!response.ok) {
-                throw new Error(`Authentication failed:`);
+            if(!register.ok) {
+                setError(true);
+                throw new Error();
             }
             navigate('/login'); 
-        } catch(err: unknown) {
-            console.log(err)
-        }}
+        }
     });
 
     return (
+        <>
         <form onSubmit={formik.handleSubmit} className={classes.register}>
             <label htmlFor="firstName">
                 First name
@@ -73,7 +57,7 @@ const RegisterForm = () => {
                 onBlur={formik.handleBlur} 
                 className={classes.register__input} 
                 type='text' id="firstName" 
-            />
+                />
             {formik.touched.firstName && formik.errors.firstName ? <p className={classes.register__error}>{formik.errors.firstName}</p> : null}
             <label htmlFor="lastName">
                 Last name
@@ -84,7 +68,7 @@ const RegisterForm = () => {
                 onBlur={formik.handleBlur} 
                 className={classes.register__input}
                 type='text' id="lastName" 
-            />
+                />
             {formik.touched.lastName && formik.errors.lastName ? <p className={classes.register__error}>{formik.errors.lastName}</p> : null}
             <label htmlFor="email">
                 Your email
@@ -106,7 +90,7 @@ const RegisterForm = () => {
                 onBlur={formik.handleBlur} 
                 className={classes.register__input} 
                 type='password' id="password" 
-            />
+                />
             {formik.touched.password && formik.errors.password ? <p className={classes.register__error}>{formik.errors.password}</p> : null}
             <label htmlFor="repeat">
                 Repeat password
@@ -117,7 +101,7 @@ const RegisterForm = () => {
                 onBlur={formik.handleBlur} 
                 className={classes.register__input} 
                 type='password' id="repeat" 
-            />
+                />
             {formik.touched.repeat && formik.errors.repeat ? <p className={classes.register__error}>{formik.errors.repeat}</p> : null}
             <div className={classes['register__btn-wrap']}>
                 <button type="submit" className={classes.register__btn}>
@@ -128,6 +112,8 @@ const RegisterForm = () => {
                 </Link>            
             </div>
         </form>
+        {error && <p className={classes.register__invalid}>Registration failed!</p>}
+    </>
     )
 }
 

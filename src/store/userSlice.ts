@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
     name: "user",
@@ -6,6 +6,11 @@ const userSlice = createSlice({
         userId: null,
         isLoggedIn: false,
     },
+    // extraReducers: builder => {
+    //     builder.addCase(fetchUsers.pending, state => {
+    //         state.isLoggedIn = false;
+    //     })
+    // },
     reducers: {
         logIn(state, action: PayloadAction<string>) {
             state.isLoggedIn = true;
@@ -13,6 +18,10 @@ const userSlice = createSlice({
         }
     }
 });
+
+// export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
+//     const data = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`);
+// })
 
 export const userActions = userSlice.actions;
 export default userSlice;

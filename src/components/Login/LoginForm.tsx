@@ -1,27 +1,14 @@
 import React from "react";
+import { useAppDispatch } from "../../hooks";
+import userSlice from "../../store/userSlice";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { Link, useNavigate } from "react-router-dom";
+import { LoginAnswerType } from "../../types/answer-type";
 import classes from "./LoginForm.module.scss";
 
-type AnswerType = {
-    kind?: string,
-    expiresIn?: string,
-    idToken?: string,
-    email?: string,
-    localId?: string,
-    refreshToken?: string,
-    code?: number,
-    registered?: boolean,
-    errors?: {
-        message?: string,
-        domain?: string,
-        reason?: string
-    }[],
-    message?: string
-}
-
 const LoginForm = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
@@ -43,11 +30,11 @@ const LoginForm = () => {
                 headers: {
                         'Content-Type': 'application/json',
                     }})
-                const data: AnswerType = await response.json();
-                console.log(data);
+                const data: LoginAnswerType = await response.json();
                 if(!response.ok) {
                     throw new Error(`Authentication failed:`);
                 }
+                dispatch(userSlice.actions.logIn(data.localId));
                 navigate('/overview');
             } catch(err: unknown) {
                 console.log(err)
