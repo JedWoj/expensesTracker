@@ -41,7 +41,7 @@ const RegisterForm = () => {
         }),
         onSubmit: async () => {
         try {
-            const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDCgnTKKFeEU8oKSTUvnywA04EW4ZDxRHk',{
+            const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`,{
                 method: 'POST',
                 body: JSON.stringify({
                     email: formik.values.email,
