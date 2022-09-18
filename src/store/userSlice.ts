@@ -5,6 +5,7 @@ const userSlice = createSlice({
     initialState: {
         userId: null,
         isLoggedIn: false,
+        registrationError: false,
     },
     // extraReducers: builder => {
     //     builder.addCase(fetchUsers.pending, state => {
@@ -15,6 +16,9 @@ const userSlice = createSlice({
         logIn(state, action: PayloadAction<string>) {
             state.isLoggedIn = true;
             state.userId = action.payload;
+        },
+        setRegistartionError(state, action: PayloadAction<boolean>) {
+            state.registrationError = action.payload;
         }
     }
 });

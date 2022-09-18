@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
-import { RegistrationAnswerType } from "../../types/answer-type";
 import classes from './RegisterForm.module.scss';
+import { setFirebaseData } from "../../lib/set-firebase-data";
+import { registerAccount } from "../../lib/register-account";
 
 const RegisterForm = () => {
     const [error, setError] = useState<boolean>(false);
@@ -25,23 +26,14 @@ const RegisterForm = () => {
             repeat: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required("Repeat password")
         }),
         onSubmit: async () => {
-            const register = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_API_KEY}`,{
-                method: 'POST',
-                body: JSON.stringify({
-                    email: formik.values.email,
-                    password: formik.values.password,
-                    returnSecureToken: true,}),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            const data: RegistrationAnswerType = await register.json();
-            console.log(data);
-            if(!register.ok) {
-                setError(true);
-                throw new Error();
+            try {
+                const {email, password} = formik.values;
+                const register = await registerAccount(email,password);
+                await setFirebaseData(register);
+                navigate('/login'); 
+            } catch (error: unknown) {
+                setError(true);   
             }
-            navigate('/login'); 
         }
     });
 
