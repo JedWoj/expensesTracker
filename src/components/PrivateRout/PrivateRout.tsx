@@ -7,7 +7,7 @@ interface PrivateRoutType {
 }
 
 const PrivateRout = ({children}: PrivateRoutType) => {
-    const isLoggedIn = useAppSelector((state) => state.user);
+    const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
     return isLoggedIn ? children : <Navigate to="/login" />
 }
 

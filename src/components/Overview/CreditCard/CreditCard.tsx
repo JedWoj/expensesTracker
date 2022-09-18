@@ -10,6 +10,7 @@ const CreditCard = () => {
     const expense = expenses.name.reduce((a, b) => a + b.value, 0);
     const incomes = useAppSelector((state) => state.transactions.incomeTransactions);
     const income = incomes.name.reduce((a,b) => a + b.value , 0);
+
     return(
         <Card>
             <section className={classes['credit-card']}>
