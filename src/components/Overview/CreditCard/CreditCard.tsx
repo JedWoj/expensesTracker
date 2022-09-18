@@ -7,9 +7,9 @@ import classes from './CreditCard.module.scss'
 
 const CreditCard = () => {
     const expenses = useAppSelector((state) => state.transactions.expensesTransactions);
-    const expense = expenses.name.reduce((a, b) => a + b.value, 0);
+    const expense = expenses.reduce((a, b) => a + b.value, 0);
     const incomes = useAppSelector((state) => state.transactions.incomeTransactions);
-    const income = incomes.name.reduce((a,b) => a + b.value , 0);
+    const income = incomes.reduce((a,b) => a + b.value , 0);
 
     return(
         <Card>
