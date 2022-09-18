@@ -4,7 +4,7 @@ import userSlice from "../../store/userSlice";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { Link, useNavigate } from "react-router-dom";
-import { LoginAnswerType } from "../../types/answer-type";
+import { loginAccount } from "../../lib/login-account";
 import classes from "./LoginForm.module.scss";
 
 const LoginForm = () => {
@@ -21,22 +21,14 @@ const LoginForm = () => {
             password: Yup.string().required("Please Enter your password"),
         }),
         onSubmit: async () => {
-            const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,{
-            method: 'POST',
-            body: JSON.stringify({
-                email: formik.values.email,
-                password: formik.values.password,
-                returnSecureToken: true,}),
-            headers: {
-                'Content-Type': 'application/json',
-            }})
-            const data: LoginAnswerType = await response.json();
-            if(!response.ok) {
+            try {
+                const {email, password} = formik.values;
+                const data = await loginAccount(email,password);
+                dispatch(userSlice.actions.logIn(data.localId));
+                navigate('/overview');
+            } catch (error: unknown) {
                 setError(true);
-                throw new Error(`Authentication failed:`);
             }
-            dispatch(userSlice.actions.logIn(data.localId));
-            navigate('/overview');
         }
     });
 
