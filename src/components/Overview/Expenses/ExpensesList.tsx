@@ -19,9 +19,9 @@ const ExpensesList = () => {
     
     const transformedTransactions = prepareData(fetchedTransactions);
     const transactionsList =  location.pathname === '/overview' ? transformedTransactions : filterTransactions(transformedTransactions, activeTransactionType);
-    let shownTransactions = [];
     const filteredByDate = filterTransactionsByDate(transactionsList,activeYear);
     const sorted = sortTransactions(filteredByDate);
+    let shownTransactions = [];
 
     useEffect(() => {
         dispatch(fetchTransactions(id));

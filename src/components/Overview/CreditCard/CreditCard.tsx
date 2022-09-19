@@ -1,14 +1,18 @@
 import React from 'react';
 import { useAppSelector } from '../../../hooks';
+import { prepareData } from '../../../util/prepare-data';
+import { filterTransactions } from '../../../util/filter-transactions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleDown, faArrowAltCircleUp } from '@fortawesome/free-regular-svg-icons';
 import Card from '../../UI/Card/Card';
 import classes from './CreditCard.module.scss'
 
 const CreditCard = () => {
-    const expenses = useAppSelector((state) => state.transactions.expensesTransactions);
+    const fetchedTransactions = useAppSelector((state) => state.transactions.allTransactions);
+    const transformedTransactions = prepareData(fetchedTransactions);
+    const expenses = filterTransactions(transformedTransactions, '-');
+    const incomes = filterTransactions(transformedTransactions, '+');
     const expense = expenses.reduce((a, b) => a + b.value, 0);
-    const incomes = useAppSelector((state) => state.transactions.incomeTransactions);
     const income = incomes.reduce((a,b) => a + b.value , 0);
 
     return(
