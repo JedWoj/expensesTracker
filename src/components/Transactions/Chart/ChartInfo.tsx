@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../../hooks';
 import { sumTransactionsValues } from './helpers';
-import { filterTransactions } from '../../Overview/Expenses/helpers';
+import { filterTransactionsByDate } from '../../Overview/Expenses/helpers';
 import classes from './ChartInfo.module.scss';
 
 const ChartInfo = () => {
@@ -9,7 +9,7 @@ const ChartInfo = () => {
     const activeType = useAppSelector((state) => state.transactions.activeTransactionType);
     const activeTransactions = useAppSelector((state) => state.transactions.activeTransactions);
 
-    const filtered = filterTransactions(activeTransactions, activeYear);
+    const filtered = filterTransactionsByDate(activeTransactions, activeYear);
 
     return(
         <div className={classes['chart-heading']}>

@@ -1,42 +1,37 @@
 import React, {useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
-import { filterTransactions,sortTransactions } from './helpers';
+import { filterTransactionsByDate,sortTransactions } from './helpers';
 import { prepareData } from '../../../util/prepare-data';
 import { Transaction } from '../../../types/transaction-type';
 import Expense from './Expense';
 import classes from './ExpensesList.module.scss';
 import { fetchTransactions } from '../../../store/async/fetch-transactions';
-import transactionsSlice from '../../../store/transactionsSlice';
+import { filterTransactions } from '../../../util/filter-transactions';
 
 const ExpensesList = () => {
+    const location = useLocation();
     const dispatch = useAppDispatch();
     const id = useAppSelector((state) => state.user.userId);
-    const location = useLocation();
-    const allTransactions = useAppSelector((state) => state.transactions.allTransactions);
-    const transformed = prepareData(allTransactions);
-    const expensesTransactions = useAppSelector((state) => state.transactions.expensesTransactions);
-    const incomesTransactions = useAppSelector((state) => state.transactions.incomeTransactions);
-    console.log(expensesTransactions,incomesTransactions);
-
-    // const transactionsList = useAppSelector((state) => location.pathname === '/overview' ? state.transactions.allTransactions : state.transactions.activeTransactions);
+    const activeTransactionType = useAppSelector((state) => state.transactions.activeTransactionType);
+    const fetchedTransactions = useAppSelector((state) => state.transactions.allTransactions);
     const activeYear = useAppSelector((state) => state.transactions.activeYear);
+    
+    const transformedTransactions = prepareData(fetchedTransactions);
+    const transactionsList =  location.pathname === '/overview' ? transformedTransactions : filterTransactions(transformedTransactions, activeTransactionType);
     let shownTransactions = [];
-    // const filtered = filterTransactions(transactionsList,activeYear);
-    // const sorted = sortTransactions(filtered);
+    const filteredByDate = filterTransactionsByDate(transactionsList,activeYear);
+    const sorted = sortTransactions(filteredByDate);
+
     useEffect(() => {
         dispatch(fetchTransactions(id));
-        // dispatch(transactionsSlice.actions.sortTransactions());
     },[dispatch, id])
     
-    // location.pathname === '/overview' ? shownTransactions = sortTransactions(transactionsList) : shownTransactions = sorted;
-
-    
-    console.log(transformed)
+    location.pathname === '/overview' ? shownTransactions = sortTransactions(transformedTransactions) : shownTransactions = sorted;
 
     return(    
         <ul className={location.pathname !== '/transactions' ? classes['expenses-list'] : undefined}>
-            {transformed.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
+            {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
         </ul>
     )
 }

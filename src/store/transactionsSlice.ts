@@ -20,7 +20,6 @@ const transactionsSlice = createSlice({
             state.allTransactions = {name: []};
         })
         builder.addCase(fetchTransactions.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.allTransactions = action.payload;
         })
         builder.addCase(fetchTransactions.rejected, (state) => {
@@ -44,9 +43,9 @@ const transactionsSlice = createSlice({
         setActiveYear(state, action: PayloadAction<string>) {
             state.activeYear = action.payload;
         },
-        sortTransactions(state) {
-            // state.incomeTransactions = state.allTransactions.name.filter(tr.type !== '-');
-            // state.expensesTransactions = state.allTransactions.name.filter(tr.type !== '+');            
+        sortTransactions(state, action: PayloadAction<Transaction[]>) {
+            state.incomeTransactions = action.payload.filter(tr => tr.type !== '-');
+            state.expensesTransactions = action.payload.filter(tr => tr.type !== '+');            
         }
     }
 });
