@@ -8,9 +8,6 @@ const transactionsSlice = createSlice({
     name: 'transactions',
     initialState: {
     allTransactions: {name: []} as {name: Transaction[]},
-    expensesTransactions: [],
-    incomeTransactions: [],
-    activeTransactions: [],
     activeTransactionType: '+',
     activeYear: '2022',
     },
@@ -27,21 +24,11 @@ const transactionsSlice = createSlice({
     },
     reducers: {
         setActiveTransactions(state, action: PayloadAction<string>) {
-            if (action.payload === '+') {
-                state.activeTransactions = state.incomeTransactions;
-                state.activeTransactionType = '+';
-            } else {
-                state.activeTransactions = state.expensesTransactions;
-                state.activeTransactionType = '-';
-            }
+            action.payload === '+' ? state.activeTransactionType = '+' : state.activeTransactionType = '-';
         },
         setActiveYear(state, action: PayloadAction<string>) {
             state.activeYear = action.payload;
         },
-        sortTransactions(state, action: PayloadAction<Transaction[]>) {
-            state.incomeTransactions = action.payload.filter(tr => tr.type !== '-');
-            state.expensesTransactions = action.payload.filter(tr => tr.type !== '+');            
-        }
     }
 });
 
