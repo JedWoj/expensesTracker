@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { immutableTransaction } from '../types/transaction-type';
 import { fetchTransactions } from './async/fetch-transactions';
 import { Transaction } from '../types/transaction-type';
 
@@ -27,10 +26,6 @@ const transactionsSlice = createSlice({
         })
     },
     reducers: {
-        addTransaction(state, action: PayloadAction<immutableTransaction>) {
-            state.allTransactions.name.push(action.payload);
-            action.payload.type === '+' ? state.incomeTransactions.push(action.payload) : state.expensesTransactions.push(Object.keys(action.payload)[0]);
-        },
         setActiveTransactions(state, action: PayloadAction<string>) {
             if (action.payload === '+') {
                 state.activeTransactions = state.incomeTransactions;

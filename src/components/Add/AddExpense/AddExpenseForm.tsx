@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { transactionsActions } from '../../../store/transactionsSlice';
-import { useAppDispatch } from '../../../hooks';
+import { useAppSelector } from '../../../hooks';
+import { addTransaction } from "../../../lib/add-transaction";
 import classes from './AddExpenseForm.module.scss';
 
 const AddExpenseForm = () => {
     const [radioValue, setRadioValue] = useState('+');
-
-    const dispatch = useAppDispatch();
+    const id = useAppSelector((state) => state.user.userId)
 
     const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRadioValue(e.target.value);
@@ -29,14 +28,15 @@ const AddExpenseForm = () => {
             date: Yup.date().required("Date is required"),
             type: Yup.string()
         }),
-        onSubmit: () => {
-            dispatch(transactionsActions.addTransaction({
-                value: Number(formik.values.value), 
-                date: formik.values.date,
-                category: formik.values.category,
-                note: formik.values.note,
-                type: radioValue,
-            }))
+        onSubmit: async () => {
+            const transaction = {
+                    value: Number(formik.values.value), 
+                    date: formik.values.date,
+                    category: formik.values.category,
+                    note: formik.values.note,
+                    type: radioValue,
+            }
+            await addTransaction(transaction,id);
             formik.resetForm();
         }
     });
