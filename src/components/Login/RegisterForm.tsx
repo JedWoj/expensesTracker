@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import classes from './RegisterForm.module.scss';
-import { setFirebaseData } from "../../lib/set-firebase-data";
 import { registerAccount } from "../../lib/register-account";
 
 const RegisterForm = () => {
@@ -28,8 +27,7 @@ const RegisterForm = () => {
         onSubmit: async () => {
             try {
                 const {email, password} = formik.values;
-                const register = await registerAccount(email,password);
-                await setFirebaseData(register);
+                await registerAccount(email,password);
                 navigate('/login'); 
             } catch (error: unknown) {
                 setError(true);   

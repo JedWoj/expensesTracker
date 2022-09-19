@@ -23,7 +23,7 @@ const AddExpenseForm = () => {
         },
         validationSchema: Yup.object({
             value: Yup.number().moreThan(0,"Value must be higher than 0").required('Value is required'),
-            category: Yup.string().trim().min(2, "Category must be longer than 2 characters").max(15, "Category must be shorter than 15 characters").required("Category is required"),
+            category: Yup.string().trim().min(2, "Category must be longer than 2 characters").max(10, "Category must be shorter than 10 characters").required("Category is required"),
             note: Yup.string().trim(),
             date: Yup.date().required("Date is required"),
             type: Yup.string()
@@ -47,7 +47,7 @@ const AddExpenseForm = () => {
                 <input 
                     type="number" 
                     placeholder="0" 
-                    max="9999999" 
+                    max="99999" 
                     className={classes['add-expense-form__amount']}
                     value={formik.values.value}
                     onChange={formik.handleChange}
@@ -81,6 +81,8 @@ const AddExpenseForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 id="date"
+                min="2020-01-01"
+                max="2022-12-31"
             />
             {formik.touched.date && formik.errors.date ? <p className={classes['add-expense-form__invalid-input']}>{formik.errors.date}</p> : null}
             <div className={classes['add-expense-form__radio-wrap']}>

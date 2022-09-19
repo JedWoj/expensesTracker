@@ -22,17 +22,19 @@ const ExpensesList = () => {
     const filteredByDate = filterTransactionsByDate(transactionsList,activeYear);
     const sorted = sortTransactions(filteredByDate);
     let shownTransactions = [];
+    
+    location.pathname === '/overview' ? shownTransactions = sortTransactions(transformedTransactions) : shownTransactions = sorted;
 
     useEffect(() => {
         dispatch(fetchTransactions(id));
     },[dispatch, id])
     
-    location.pathname === '/overview' ? shownTransactions = sortTransactions(transformedTransactions) : shownTransactions = sorted;
-
-    return(    
-        <ul className={location.pathname !== '/transactions' ? classes['expenses-list'] : undefined}>
-            {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
-        </ul>
+    return(   
+        <>
+            <ul className={location.pathname !== '/transactions' ? classes['expenses-list'] : undefined}>
+                {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
+            </ul>
+        </> 
     )
 }
 
