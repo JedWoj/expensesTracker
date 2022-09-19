@@ -1,0 +1,41 @@
+.logout-modal {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3rem;
+    background-color: #fff;
+    color: #555;
+    text-align: center;
+    border-radius: 5px;
+
+    &__heading {
+        font-size: 2.3rem;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 4rem;
+        color: #fff;
+        border-radius: 0.2rem;
+        gap: 2rem;
+    }
+
+    &__btn {
+        width: 40%;
+        background: linear-gradient(140deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        box-shadow: 8px 7px 28px -5px rgba(65, 69, 115, 1);
+        outline: none;
+        border: none;
+        color: #fff;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        font-size: 2rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        text-decoration: none;
+    }
+}
