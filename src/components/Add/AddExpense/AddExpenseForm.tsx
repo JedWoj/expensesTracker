@@ -30,11 +30,11 @@ const AddExpenseForm = () => {
         }),
         onSubmit: async () => {
             const transaction = {
-                    value: Number(formik.values.value), 
-                    date: formik.values.date,
-                    category: formik.values.category,
-                    note: formik.values.note,
-                    type: radioValue,
+                value: Number(formik.values.value), 
+                date: formik.values.date,
+                category: formik.values.category,
+                note: formik.values.note,
+                type: radioValue,
             }
             await addTransaction(transaction,id);
             formik.resetForm();
