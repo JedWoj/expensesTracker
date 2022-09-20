@@ -3,15 +3,16 @@
     flex-direction: column;
 
     @media only screen and (min-width: 960px) {
-        display: flex;
+        flex-direction: row;
     }
 
     &__cta {
         @media only screen and (min-width: 960px) {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
+            width: 60%;
         }
     }
 }

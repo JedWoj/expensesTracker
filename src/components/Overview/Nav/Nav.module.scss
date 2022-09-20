@@ -11,6 +11,11 @@
     height: 10vh;
     z-index: 2;
 
+    @media only screen and (min-width: 960px) {
+        position: static;
+        display: flex;
+    }
+
     &__link {
         cursor: pointer;
         width: 33vw;
