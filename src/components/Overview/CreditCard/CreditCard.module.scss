@@ -2,12 +2,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: calc(100vw - 6rem);
-    height: calc(68vw - 6rem);
+    width: calc(100vw - 60px);
+    height: calc(68vw - 60px);
     padding: 2rem;
     border-radius: inherit;
     background: linear-gradient(119deg, rgba(91, 203, 233, 1) 0%, rgba(117, 136, 235, 1) 28%, rgba(186, 111, 240, 1) 49%, rgba(228, 111, 240, 1) 64%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
     text-align: center;
+
+    @media only screen and (min-width: 640px) {
+        width: calc(60vw - 80px);
+        height: calc(41vw - 80px);
+        margin: auto;
+    }
+
+    @media only screen and (min-width: 960px) {
+        margin-right: 20px;
+    }
 
     &__heading {
         font-size: 1.5rem;
