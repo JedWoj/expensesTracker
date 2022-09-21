@@ -1,0 +1,21 @@
+.transactions {
+
+    @media only screen and (min-width: 960px) {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__cta {
+        @media only screen and (min-width: 960px) {
+            width: 48%;
+        }
+    }
+
+    &__wrap {
+        flex-grow: 1;
+
+        @media only screen and (min-width: 960px) {
+            margin-top: -2rem;
+        }
+    }
+}
