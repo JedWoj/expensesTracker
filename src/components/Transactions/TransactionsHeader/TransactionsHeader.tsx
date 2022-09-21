@@ -16,8 +16,8 @@ const TransactionsHeader = () => {
             <h1 className={classes['transactions-header__heading']}>
                 Transactions
             </h1>
-            <div className={classes['transactions-header__icon-box']}>
-                <FontAwesomeIcon onClick={() => setSelectIsOpen(true)} icon={faCalendar} className={classes['transactions-header__icon']} />
+            <div onClick={() => setSelectIsOpen(true)} className={`${classes['transactions-header__icon-box']} ${classes['transactions-header__icon-box--calendar']}`}>
+                <FontAwesomeIcon icon={faCalendar} className={classes['transactions-header__icon']} />
             </div>
             {selectIsOpen && <Select handleVisibility={setSelectIsOpen} />}
         </header>

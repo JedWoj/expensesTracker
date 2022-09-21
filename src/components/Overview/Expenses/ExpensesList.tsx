@@ -44,7 +44,7 @@ const ExpensesList = () => {
     return(   
         <section className={location.pathname !== '/transactions' ? `${classes['expenses-list']} ${classes['expenses-list--margin']}` : `${classes['expenses-list']}`}>
             <ul>
-                {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} note={exp.note} type={exp.type} amount={exp.value} date={exp.date} />)}
+                {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} type={exp.type} amount={exp.value} date={exp.date} />)}
             </ul>
             {(avaiableTransactions.length / (activePage + 1)) > 6 && <button type='button' onClick={handleLoadingMore} className={classes['expenses-list__btn']}>
                 Load Older

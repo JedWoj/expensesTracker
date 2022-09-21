@@ -17,14 +17,12 @@ const AddExpenseForm = () => {
         initialValues: {
             value: '',
             category: '',
-            note: '',
             date: '',
             type: '+',
         },
         validationSchema: Yup.object({
             value: Yup.number().moreThan(0,"Value must be higher than 0").required('Value is required'),
             category: Yup.string().trim().min(2, "Category must be longer than 2 characters").max(10, "Category must be shorter than 10 characters").required("Category is required"),
-            note: Yup.string().trim(),
             date: Yup.date().required("Date is required"),
             type: Yup.string()
         }),
@@ -33,7 +31,6 @@ const AddExpenseForm = () => {
                 value: Number(formik.values.value), 
                 date: formik.values.date,
                 category: formik.values.category,
-                note: formik.values.note,
                 type: radioValue,
             }
             await addTransaction(transaction,id);
@@ -66,14 +63,6 @@ const AddExpenseForm = () => {
                 id="category"
             />   
             {formik.touched.category && formik.errors.category ? <p className={classes['add-expense-form__invalid-input']}>{formik.errors.category}</p> : null}
-            <textarea 
-                placeholder='Note' 
-                className={classes['add-expense-form__note']}
-                value={formik.values.note}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                id="note"
-            ></textarea>
             <input
                 type='date'
                 className={classes['add-expense-form__date']} 
