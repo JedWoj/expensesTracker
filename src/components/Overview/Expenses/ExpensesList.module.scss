@@ -1,3 +1,24 @@
 .expenses-list {
-    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+
+    &--margin {
+        margin-bottom: 8rem;
+
+        @media only screen and (min-width: 960px) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        border-radius: 5px;
+        border: none;
+        background: linear-gradient(180deg, rgba(91, 203, 233, 1) 0%, rgba(107, 160, 221, 1) 20%, rgba(117, 136, 235, 1) 31%, rgba(154, 91, 199, 1) 42%, rgba(228, 111, 240, 1) 69%, rgba(240, 111, 141, 1) 82%, rgba(217, 178, 114, 1) 100%);
+        color: white;
+        font-size: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1rem 2rem;
+        cursor: pointer;
+    }
 }

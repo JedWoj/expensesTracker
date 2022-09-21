@@ -2,6 +2,7 @@ import React, {useEffect,useCallback} from 'react';
 import { transactionsActions } from '../../../store/transactionsSlice';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 import classes from './Switch.module.scss';
+import { userActions } from '../../../store/userSlice';
 
 const Switch = () => {
     const dispatch = useAppDispatch();
@@ -14,6 +15,10 @@ const Switch = () => {
     useEffect(()=> {
         handleTransactionsFiltering(activeTransactionType);
     },[handleTransactionsFiltering, activeTransactionType])
+
+    useEffect(() => {
+        dispatch(userActions.setActivePage(0));
+    }, [dispatch, activeTransactionType])
 
     return(      
         <section className={classes.switch}>     

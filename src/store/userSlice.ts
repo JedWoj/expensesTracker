@@ -5,6 +5,7 @@ const userSlice = createSlice({
     initialState: {
         userId: null,
         isLoggedIn: false,
+        activePage: 0,
     },
     reducers: {
         logIn(state, action: PayloadAction<string>) {
@@ -14,7 +15,11 @@ const userSlice = createSlice({
         logOut(state) {
             state.isLoggedIn = false;
             state.userId = null;
+            state.activePage = 0;
         },
+        setActivePage(state, action: PayloadAction<number>) {
+            state.activePage = action.payload;
+        }
     }
 });
 
