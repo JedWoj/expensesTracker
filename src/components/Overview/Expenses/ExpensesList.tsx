@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../../hooks';
 import { filterTransactionsByDate,sortTransactions } from './helpers';
 import { prepareData } from '../../../util/prepare-data';
 import { Transaction } from '../../../types/transaction-type';
+import NoExpenses from './NoExpenses';
 import Expense from './Expense';
 import classes from './ExpensesList.module.scss';
 import { fetchTransactions } from '../../../store/async/fetch-transactions';
@@ -26,7 +27,7 @@ const ExpensesList = () => {
     let avaiableTransactions = [];
     
     location.pathname === '/overview' ? avaiableTransactions = sortTransactions(transformedTransactions) : avaiableTransactions = sorted;
-
+    
     let shownTransactions = avaiableTransactions.slice(0 + activePage * 6, 6 + 6 * activePage);
 
     const handleLoadingMore = () => {
@@ -41,15 +42,18 @@ const ExpensesList = () => {
         dispatch(userActions.setActivePage(0));
     }, [location.pathname, dispatch])
     
-    return(   
-        <section className={location.pathname !== '/transactions' ? `${classes['expenses-list']} ${classes['expenses-list--margin']}` : `${classes['expenses-list']}`}>
-            <ul>
-                {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} type={exp.type} amount={exp.value} date={exp.date} />)}
-            </ul>
-            {(avaiableTransactions.length / (activePage + 1)) > 6 && <button type='button' onClick={handleLoadingMore} className={classes['expenses-list__btn']}>
-                Load Older
-            </button>}
-        </section> 
+    return(
+        <>
+            <section className={location.pathname !== '/transactions' ? `${classes['expenses-list']} ${classes['expenses-list--margin']}` : `${classes['expenses-list']}`}>
+                <ul>
+                    {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} type={exp.type} amount={exp.value} date={exp.date} />)}
+                </ul>
+                {(avaiableTransactions.length / (activePage + 1)) > 6 && <button type='button' onClick={handleLoadingMore} className={classes['expenses-list__btn']}>
+                    Load Older
+                </button>}
+            </section>
+            {shownTransactions.length === 0 && <NoExpenses />} 
+        </>   
     )
 }
 
