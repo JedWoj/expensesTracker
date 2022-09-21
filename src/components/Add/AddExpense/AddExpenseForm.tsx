@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useAppSelector } from '../../../hooks';
@@ -7,7 +8,8 @@ import classes from './AddExpenseForm.module.scss';
 
 const AddExpenseForm = () => {
     const [radioValue, setRadioValue] = useState('+');
-    const id = useAppSelector((state) => state.user.userId)
+    const id = useAppSelector((state) => state.user.userId);
+    const navigate = useNavigate();
 
     const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRadioValue(e.target.value);
@@ -35,6 +37,7 @@ const AddExpenseForm = () => {
             }
             await addTransaction(transaction,id);
             formik.resetForm();
+            navigate('/overview');
         }
     });
 
