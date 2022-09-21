@@ -22,7 +22,7 @@ const Nav = () => {
                         +
                     </div>
                 </Link>
-                <Link to="/transactions" className={classes.navigation__link}>
+                <Link to="/transactions" className={`${classes.navigation__link} ${classes['navigation__link--stretched']}`}>
                     <div className={classes.navigation__icon}>
                         <FontAwesomeIcon icon={faBarChart} rotation={270} />
                     </div>
