@@ -21,4 +21,8 @@
         padding: 1rem 2rem;
         cursor: pointer;
     }
+
+    &__wrap {
+        display: flex;
+    }
 }

@@ -30,10 +30,6 @@ const ExpensesList = () => {
     
     let shownTransactions = avaiableTransactions.slice(0 + activePage * 6, 6 + 6 * activePage);
 
-    const handleLoadingMore = () => {
-        dispatch(userActions.setActivePage(activePage + 1));
-    }
-
     useEffect(() => {
         dispatch(fetchTransactions(id));
     },[dispatch, id])
@@ -48,9 +44,14 @@ const ExpensesList = () => {
                 <ul>
                     {shownTransactions.map((exp: Transaction) => <Expense key={Math.random()} category={exp.category} type={exp.type} amount={exp.value} date={exp.date} />)}
                 </ul>
-                {(avaiableTransactions.length / (activePage + 1)) > 6 && <button type='button' onClick={handleLoadingMore} className={classes['expenses-list__btn']}>
-                    Load Older
-                </button>}
+                <div className={classes['expenses-list__wrap']}>
+                    {activePage > 0 && <button type='button' className={classes['expenses-list__btn']} onClick={() => dispatch(userActions.setActivePage(activePage - 1))}>
+                        Load Newer
+                    </button>}
+                    {(avaiableTransactions.length / (activePage + 1)) > 6 && <button type='button' onClick={() => dispatch(userActions.setActivePage(activePage + 1))} className={classes['expenses-list__btn']}>
+                        Load Older
+                    </button>}
+                </div>
             </section>
             {shownTransactions.length === 0 && <NoExpenses />} 
         </>   
