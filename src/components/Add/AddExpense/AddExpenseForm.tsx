@@ -24,7 +24,7 @@ const AddExpenseForm = () => {
         },
         validationSchema: Yup.object({
             value: Yup.number().moreThan(0,"Value must be higher than 0").required('Value is required'),
-            category: Yup.string().trim().min(2, "Category must be longer than 2 characters").max(10, "Category must be shorter than 10 characters").required("Category is required"),
+            category: Yup.string().trim().min(2, "Category must be longer than 2 characters").max(15, "Category must be shorter than 15 characters").required("Category is required"),
             date: Yup.date().required("Date is required"),
             type: Yup.string()
         }),
