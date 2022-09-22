@@ -16,7 +16,7 @@ const TransactionsHeader = () => {
             <h1 className={classes['transactions-header__heading']}>
                 Transactions
             </h1>
-            <div onClick={() => setSelectIsOpen(true)} className={`${classes['transactions-header__icon-box']} ${classes['transactions-header__icon-box--calendar']}`}>
+            <div data-testid={'selectBtn'} onClick={() => setSelectIsOpen(true)} className={`${classes['transactions-header__icon-box']} ${classes['transactions-header__icon-box--calendar']}`}>
                 <FontAwesomeIcon icon={faCalendar} className={classes['transactions-header__icon']} />
             </div>
             {selectIsOpen && <Select handleVisibility={setSelectIsOpen} />}
