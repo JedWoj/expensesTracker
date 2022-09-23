@@ -1,4 +1,19 @@
-## Available Scripts
+### Wersja Live: https://expenses-tracker-mauve.vercel.app/login
+
+## 1.Technologie  
+-React  
+-Redux Toolkit  
+-TypeScript  
+-Firebase  
+-Jest + React Testing Library  
+-Formik  
+-SCSS modules  
+
+## 2.Co się nauczyłem:
+Jest to aplikacja w której chciałem przećwiczyć pracę w czystym react oraz TypeScript. Nauczyłem się w niej pracować z backendem jakim jest Firebase oraz pierwszy raz użyłem Reduxa w dużym projekcie. Poza tym zacząłem korzystać z React Testing Library w celu pisania testów jednostkowych swoich komponentów i funkcji.
+
+## 3.Instalacja:
+Available Scripts
 
 In the project directory, you can run:
 
